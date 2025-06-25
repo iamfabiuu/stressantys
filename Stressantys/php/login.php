@@ -21,10 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->execute();
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($usuario) {
-        echo "<p>Senha digitada: {$senha}</p>";
-        echo "<p>Senha no banco: {$usuario['senha']}</p>";
-
+        
         if (password_verify($senha, $usuario['senha'])) {
             echo "<p>Senha verificada com sucesso.</p>";
         } else {
