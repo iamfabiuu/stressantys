@@ -18,7 +18,7 @@ $usuario = $_SESSION['usuario'] ?? null;
     <p>Deseja verificar o seu pedido? <a href="/stressantys/php/meusPedidos.php">Meus Pedidos</a></p>
     <a href="/stressantys/php/logout.php" class="btn btn-danger">Sair</a>
   <?php else: ?>
-    <p>Você não está logado. <a href="/stressantys/html/login.html"> Faça Login</a> ou <a href="/html/cadastro.html">Cadastrar-se</a></p>
+    <p>Você não está logado. <a href="/stressantys/html/login.html"> Faça Login</a> ou <a href="/stressantys/html/cadastro.html">Cadastrar-se</a></p>
   <?php endif; ?>
 </body>
 </html>
