@@ -31,48 +31,84 @@ try {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Meus Pedidos</title>
+  <meta charset="UTF-8" />
+  <title>Meus Pedidos - Stressantys</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: "Segoe UI", sans-serif;
+    }
+    .card {
+      border: none;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
+    }
+    .pedido-id {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .btn-dark {
+      background-color: #000;
+      border: none;
+    }
+    .btn-dark:hover {
+      background-color: #333;
+    }
+    ul.list-group {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <h2>Meus Pedidos</h2>
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">Meus Pedidos</h2>
 
     <?php if (empty($pedidos)): ?>
-        <p>Você ainda não fez nenhum pedido.</p>
+      <div class="alert alert-warning text-center">
+        Você ainda não fez nenhum pedido.
+      </div>
     <?php else: ?>
-        <?php foreach ($pedidos as $pedido): ?>
-            <div style="border:1px solid #ccc; margin-bottom: 15px; padding:10px;">
-                <h3>Pedido #<?= str_pad($pedido['numped'], 4, '0', STR_PAD_LEFT) ?></h3>
-                <p><strong>Valor Total:</strong> R$ <?= number_format($pedido['valortotal'], 2, ',', '.') ?></p>
-                <p><strong>Desconto:</strong> R$ <?= number_format($pedido['desconto'], 2, ',', '.') ?></p>
-                <p><strong>Forma de Pagamento:</strong> <?= htmlspecialchars($pedido['tipo_pag']) ?></p>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <?php foreach ($pedidos as $pedido): ?>
+            <div class="card mb-4 p-4">
+              <div class="pedido-id mb-2">Pedido #<?= str_pad($pedido['numped'], 4, '0', STR_PAD_LEFT) ?></div>
+              <p><strong>Valor Total:</strong> R$ <?= number_format($pedido['valortotal'], 2, ',', '.') ?></p>
+              <p><strong>Desconto:</strong> R$ <?= number_format($pedido['desconto'], 2, ',', '.') ?></p>
+              <p><strong>Forma de Pagamento:</strong> <?= htmlspecialchars($pedido['tipo_pag']) ?></p>
 
-                <h4>Carros neste pedido:</h4>
-                <ul>
+              <h5 class="mt-4">Carros neste pedido:</h5>
+              <ul class="list-group list-group-flush">
                 <?php
-                    $stmt = $pdo->prepare("
-                        SELECT c.modelo, c.marca, c.placa, c.preco, c.ano
-                        FROM Stpedcar pc
-                        JOIN Stcar c ON pc.id_car = c.id
-                        WHERE pc.id_ped = :id_ped
-                    ");
-                    $stmt->execute([':id_ped' => $pedido['numped']]);
-                    $carros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                  $stmt = $pdo->prepare("
+                    SELECT c.modelo, c.marca, c.placa, c.preco, c.ano
+                    FROM Stpedcar pc
+                    JOIN Stcar c ON pc.id_car = c.id
+                    WHERE pc.id_ped = :id_ped
+                  ");
+                  $stmt->execute([':id_ped' => $pedido['numped']]);
+                  $carros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    foreach ($carros as $carro):
+                  foreach ($carros as $carro):
                 ?>
-                    <li>
-                        <?= htmlspecialchars($carro['marca']) ?> <?= htmlspecialchars($carro['modelo']) ?> |
-                        Ano: <?= $carro['ano'] ?> |
-                        Placa: <?= $carro['placa'] ?> |
-                        R$ <?= number_format($carro['preco'], 2, ',', '.') ?>
-                    </li>
+                  <li class="list-group-item">
+                    <strong><?= htmlspecialchars($carro['marca']) ?> <?= htmlspecialchars($carro['modelo']) ?></strong> |
+                    Ano: <?= $carro['ano'] ?> |
+                    Placa: <?= $carro['placa'] ?> |
+                    <strong>R$ <?= number_format($carro['preco'], 2, ',', '.') ?></strong>
+                  </li>
                 <?php endforeach; ?>
-                </ul>
+              </ul>
             </div>
-        <?php endforeach; ?>
+          <?php endforeach; ?>
+        </div>
+      </div>
     <?php endif; ?>
 
-    <a href="/stressantys/index.php">Voltar à página inicial</a>
+    <div class="text-center mt-4">
+      <a href="/stressantys/index.php" class="btn btn-dark px-4">Voltar à Página Inicial</a>
+    </div>
+  </div>
 </body>
 </html>

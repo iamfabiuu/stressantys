@@ -23,39 +23,95 @@ $carros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Montar Pedido</title>
+  <meta charset="UTF-8" />
+  <title>Montar Pedido - Stressantys</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
+    }
+
+    h2, h3 {
+      font-weight: 600;
+    }
+
+    .btn-dark {
+      background-color: #000;
+      border: none;
+    }
+
+    .btn-dark:hover {
+      background-color: #333;
+    }
+
+    .table thead th {
+      background-color: #e9ecef;
+    }
+
+    .form-check-input:checked {
+      background-color: #000;
+      border-color: #000;
+    }
+  </style>
 </head>
 <body>
-    <h2>Olá, <?= $_SESSION['usuario']['nome'] ?>!</h2>
-    <h3>Monte seu pedido</h3>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card p-4">
+          <h2 class="mb-3">Olá, <?= htmlspecialchars($_SESSION['usuario']['nome']) ?>!</h2>
+          <h4 class="mb-4">Monte seu pedido</h4>
 
-    <form action="processaPedido.php" method="POST">
-        <table border="1" cellpadding="5">
-            <tr>
-                <th>Selecionar</th>
-                <th>Modelo</th>
-                <th>Marca</th>
-                <th>Preço</th>
-                <th>Placa</th>
-                <th>Ano</th>
-                <th>Estoque</th>
-            </tr>
-            <?php foreach ($carros as $carro): ?>
-                <tr>
-                    <td><input type="checkbox" name="carros[]" value="<?= $carro['id'] ?>"></td>
-                    <td><?= htmlspecialchars($carro['modelo']) ?></td>
-                    <td><?= htmlspecialchars($carro['marca']) ?></td>
-                    <td>R$ <?= number_format($carro['preco'], 2, ',', '.') ?></td>
-                    <td><?= htmlspecialchars($carro['placa']) ?></td>
-                    <td><?= htmlspecialchars($carro['ano']) ?></td>
-                    <td><?= $carro['estoque'] ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
+          <form action="processaPedido.php" method="POST">
+            <div class="table-responsive">
+              <table class="table table-bordered align-middle">
+                <thead>
+                  <tr>
+                    <th scope="col">Selecionar</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Placa</th>
+                    <th scope="col">Ano</th>
+                    <th scope="col">Estoque</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($carros as $carro): ?>
+                    <tr>
+                      <td class="text-center">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="carros[]" value="<?= $carro['id'] ?>">
+                        </div>
+                      </td>
+                      <td><?= htmlspecialchars($carro['modelo']) ?></td>
+                      <td><?= htmlspecialchars($carro['marca']) ?></td>
+                      <td>R$ <?= number_format($carro['preco'], 2, ',', '.') ?></td>
+                      <td><?= htmlspecialchars($carro['placa']) ?></td>
+                      <td><?= htmlspecialchars($carro['ano']) ?></td>
+                      <td><?= $carro['estoque'] ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
 
-        <br>
-        <button type="submit">Finalizar Pedido</button>
-    </form>
+            <div class="text-end mt-4">
+              <button type="submit" class="btn btn-dark px-4">Finalizar Pedido</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
+
