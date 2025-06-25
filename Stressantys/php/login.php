@@ -21,17 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->execute();
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        
-        if (password_verify($senha, $usuario['senha'])) {
-            echo "<p>Senha verificada com sucesso.</p>";
-        } else {
-            echo "<p>Falha na verificação da senha.</p>";
-        }
-    } else {
-        echo "<p>Usuário não encontrado.</p>";
-    }
-
-
         // Verifica se achou o usuário e se a senha está correta
         if ($usuario && password_verify($senha, $usuario['senha'])) {
             $_SESSION['usuario'] = [
