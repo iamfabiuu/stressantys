@@ -36,12 +36,6 @@
           <div class="card p-4">
             <h2 class="mb-4 text-center">Login</h2>
 
-            <?php if ($mensagem): ?>
-            <div class="alert alert-danger text-center">
-              <?= htmlspecialchars($mensagem) ?>
-            </div>
-            <?php endif; ?>
-
             <form method="POST" action="/stressantys/php/login.php">
               <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>

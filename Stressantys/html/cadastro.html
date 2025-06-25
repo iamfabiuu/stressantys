@@ -36,12 +36,6 @@
           <div class="card p-4">
             <h2 class="mb-4 text-center">Cadastro de Usuário</h2>
 
-            <?php if ($mensagem): ?>
-            <div class="alert alert-info text-center">
-              <?= htmlspecialchars($mensagem) ?>
-            </div>
-            <?php endif; ?>
-
             <form method="POST" action="../catalogo.php" novalidate>
               <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
