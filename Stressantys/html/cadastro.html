@@ -10,22 +10,89 @@
     />
     <style>
       body {
-        background-color: #f5f5f5;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
         font-family: "Segoe UI", sans-serif;
+        color: #212529;
       }
+
+      h2 {
+        font-weight: 700;
+        font-size: 1.9rem;
+        text-align: center;
+        background: linear-gradient(to right, #000, #0d6efd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+      }
+
       .card {
         border: none;
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        border-radius: 1.2rem;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 1.4rem 2.8rem rgba(0, 0, 0, 0.08);
+      }
+
       .form-label {
         font-weight: 500;
+        margin-bottom: 0.3rem;
       }
+
+      .form-control {
+        border-radius: 0.6rem;
+        padding: 0.75rem 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+      }
+
       .btn-primary {
-        background-color: #000;
+        background: linear-gradient(135deg, #000, #333);
         border: none;
+        border-radius: 0.6rem;
+        padding: 0.75rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease, transform 0.2s ease;
       }
+
       .btn-primary:hover {
-        background-color: #333;
+        background-color: #0d6efd;
+        color: #fff;
+        transform: scale(1.02);
+      }
+
+      a.text-decoration-none {
+        color: #0d6efd;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      a.text-decoration-none:hover {
+        text-decoration: underline;
+        color: #084298;
+      }
+
+      @media (max-width: 576px) {
+        .card {
+          padding: 1.5rem !important;
+        }
+
+        .btn-primary {
+          width: 100%;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
       }
     </style>
   </head>
@@ -33,9 +100,13 @@
     <div class="container py-5">
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
-          <div class="card p-4">
-            <h2 class="mb-4 text-center">Cadastro de Usuário</h2>
-            <form method="POST" action="/stressantys/php/cadastrar.php" novalidate>
+          <div class="card p-4 p-md-5">
+            <h2>Cadastro de Usuário</h2>
+            <form
+              method="POST"
+              action="/stressantys/php/cadastrar.php"
+              novalidate
+            >
               <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
                 <input
@@ -106,7 +177,7 @@
 
             <p class="text-center mt-3 mb-0">
               Já tem conta?
-              <a href="login.php" class="text-decoration-none">Faça login</a>
+              <a href="./login.html" class="text-decoration-none">Faça login</a>
             </p>
           </div>
         </div>

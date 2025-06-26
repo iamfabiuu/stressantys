@@ -10,22 +10,94 @@
     />
     <style>
       body {
-        background-color: #f5f5f5;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
         font-family: "Segoe UI", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        color: #212529;
       }
+
       .card {
         border: none;
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        border-radius: 1.2rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.06);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
       }
-      .btn-primary {
-        background-color: #000;
-        border: none;
+
+      .card:hover {
+        box-shadow: 0 1.4rem 2.8rem rgba(0, 0, 0, 0.08);
+        transform: translateY(-4px);
       }
-      .btn-primary:hover {
-        background-color: #333;
+
+      h2 {
+        font-size: 1.9rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, #000, #0d6efd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
+
       .form-label {
         font-weight: 500;
+        margin-bottom: 0.3rem;
+      }
+
+      .form-control {
+        border-radius: 0.6rem;
+        padding: 0.75rem 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #000, #333);
+        border: none;
+        border-radius: 0.6rem;
+        padding: 0.75rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #0d6efd;
+        color: #fff;
+        transform: scale(1.02);
+      }
+
+      a.text-decoration-none {
+        color: #0d6efd;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      a.text-decoration-none:hover {
+        color: #084298;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 576px) {
+        .card {
+          padding: 1.5rem;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        .btn-primary {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -34,7 +106,7 @@
       <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
           <div class="card p-4">
-            <h2 class="mb-4 text-center">Login</h2>
+            <h2>Login</h2>
 
             <form method="POST" action="/stressantys/php/login.php">
               <div class="mb-3">
@@ -66,7 +138,7 @@
 
             <p class="text-center mt-3 mb-0">
               Ainda não tem conta?
-              <a href="cadastro.php" class="text-decoration-none"
+              <a href="./cadastro.html" class="text-decoration-none"
                 >Cadastre-se</a
               >
             </p>

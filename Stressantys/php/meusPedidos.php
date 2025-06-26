@@ -40,30 +40,146 @@ try {
   <title>Meus Pedidos - Stressantys</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      background-color: #f8f9fa;
-      font-family: "Segoe UI", sans-serif;
+<style>
+  body {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    font-family: "Segoe UI", sans-serif;
+    color: #212529;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 2.25rem;
+    text-align: center;
+    color: #111;
+    background: linear-gradient(to right, #0d6efd, #00bcd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+  }
+
+  .card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1.2rem 2rem rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 1.6rem 2.8rem rgba(0, 0, 0, 0.08);
+  }
+
+  .pedido-id {
+    font-weight: 600;
+    font-size: 1.35rem;
+    background: linear-gradient(to right, #000, #0d6efd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .form-check-input {
+    cursor: pointer;
+    transform: scale(1.25);
+    margin-right: 0.75rem;
+    border: 2px solid #0d6efd;
+    transition: all 0.3s ease;
+  }
+
+  .form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+  }
+
+  .form-check-label {
+    cursor: pointer;
+    font-size: 1rem;
+    color: #343a40;
+  }
+
+  .btn-dark {
+    background: linear-gradient(135deg, #000, #343a40);
+    border: none;
+    border-radius: 0.6rem;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  .btn-dark:hover {
+    background: #0d6efd;
+    color: #fff;
+    transform: scale(1.03);
+  }
+
+  .btn-danger {
+    background: none;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    border-radius: 0.6rem;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  ul.list-group {
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  ul.list-group .list-group-item {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    backdrop-filter: blur(6px);
+    transition: background 0.3s ease;
+  }
+
+  ul.list-group .list-group-item:hover {
+    background-color: #f1f3f5;
+  }
+
+  ul.list-group .list-group-item:last-child {
+    border-bottom: none;
+  }
+
+  .alert {
+    border-radius: 1rem;
+    background: rgba(13, 110, 253, 0.1);
+    border-left: 4px solid #0d6efd;
+    color: #0d6efd;
+    font-weight: 500;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  @media (max-width: 576px) {
+    h2 {
+      font-size: 1.75rem;
     }
+
+    .btn {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
     .card {
-      border: none;
-      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
+      padding: 1.2rem;
     }
-    .pedido-id {
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-    .btn-dark {
-      background-color: #000;
-      border: none;
-    }
-    .btn-dark:hover {
-      background-color: #333;
-    }
-    ul.list-group {
-      margin-top: 10px;
-    }
-  </style>
+  }
+</style>
+
 </head>
 <body>
   <div class="container py-5">

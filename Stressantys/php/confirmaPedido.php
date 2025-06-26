@@ -57,26 +57,105 @@ try {
   <title>Confirmação de Pedido</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      background-color: #f5f5f5;
-      font-family: "Segoe UI", sans-serif;
+<style>
+  body {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    font-family: "Segoe UI", sans-serif;
+    color: #212529;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    text-align: center;
+    background: linear-gradient(to right, #000, #0d6efd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+  }
+
+  .card {
+    border: none;
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 1.75rem 2.8rem rgba(0, 0, 0, 0.08);
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  h4 {
+    font-weight: 600;
+    color: #111;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .table {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  .table th {
+    background-color: #f1f3f5;
+    color: #000;
+    font-weight: 600;
+    border: none;
+  }
+
+  .table td {
+    border-top: 1px solid #dee2e6;
+    vertical-align: middle;
+    background-color: #ffffff;
+  }
+
+  .btn-dark {
+    background: linear-gradient(135deg, #000, #222);
+    border: none;
+    border-radius: 0.6rem;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    color: #fff;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .btn-dark:hover {
+    background-color: #0d6efd;
+    color: #fff;
+    transform: scale(1.03);
+  }
+
+  hr {
+    border-top: 2px dashed #ccc;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 576px) {
+    h2 {
+      font-size: 1.75rem;
     }
-    .card {
-      border: none;
-      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.08);
-    }
+
     .table th, .table td {
-      vertical-align: middle;
+      font-size: 0.875rem;
     }
+
     .btn-dark {
-      background-color: #000;
-      border: none;
+      width: 100%;
     }
-    .btn-dark:hover {
-      background-color: #333;
-    }
-  </style>
+  }
+</style>
+
 </head>
 <body>
   <div class="container py-5">
